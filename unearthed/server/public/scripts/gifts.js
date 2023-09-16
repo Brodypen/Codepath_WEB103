@@ -1,12 +1,8 @@
 const renderGifts = async () => {
   const response = await fetch("/gifts");
   const data = await response.json();
-  console.log(data);
-
   const mainContent = document.getElementById("main-content");
-
   if (data) {
-    console.log(data.map((gift) => gift.name));
     data.map((gift) => {
       const card = document.createElement("div");
       card.classList.add("card");
@@ -39,6 +35,7 @@ const renderGifts = async () => {
 
       card.appendChild(topContainer);
       card.appendChild(bottomContainer);
+
       mainContent.appendChild(card);
     });
   } else {
