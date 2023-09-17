@@ -1,33 +1,33 @@
-const header = document.querySelector("header");
+const header = document.querySelector('header');
 
-const headerContainer = document.createElement("div");
-headerContainer.className = "header-container";
+const headerContainer = document.createElement('div');
+headerContainer.className = 'header-container';
 
-const headerLeft = document.createElement("div");
-headerLeft.className = "header-left";
+const headerLeft = document.createElement('div')
+headerLeft.className = 'header-left'
 
-const headerLogo = document.createElement("img");
-headerLogo.src = "/logo.png";
+const headerLogo = document.createElement('img')
+headerLogo.src = '/logo.png'
 
-const headerTitle = document.createElement("h1");
-headerTitle.textContent = "UnEarthed";
+const headerTitle = document.createElement('h1')
+headerTitle.textContent = 'UnEarthed'
 
-headerLeft.appendChild(headerLogo);
-headerLeft.appendChild(headerTitle);
+headerLeft.appendChild(headerLogo)
+headerLeft.appendChild(headerTitle)
 
-const headerRight = document.createElement("div");
-headerRight.className = "header-right";
+const headerRight = document.createElement('div')
+headerRight.className = 'header-right'
 
-const headerButton = document.createElement("button");
-headerButton.textContent = "Home";
+const headerButton = document.createElement('button')
+headerButton.textContent = 'Home'
+    
+headerButton.addEventListener('click', function handleClick(event) {
+  window.location = '/'
+})
 
-headerButton.addEventListener("click", function handleClick(event) {
-  window.location = "/";
-});
+headerRight.appendChild(headerButton)
 
-headerRight.appendChild(headerButton);
+headerContainer.appendChild(headerLeft)
+headerContainer.appendChild(headerRight)
 
-headerContainer.appendChild(headerLeft);
-headerContainer.appendChild(headerRight);
-
-header.appendChild(headerContainer);
+header.appendChild(headerContainer)

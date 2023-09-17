@@ -1,4 +1,4 @@
-const giftData = [{
+const giftData = {
     "id": 1,
     "name": "Gift 1",
     "pricePoint": 1,
@@ -7,5 +7,5 @@ const giftData = [{
     "description": "Description 1",
     "submittedBy": "User 1",
     "submittedOn": "2018-01-01"
-}];
+}
 export default giftData;
