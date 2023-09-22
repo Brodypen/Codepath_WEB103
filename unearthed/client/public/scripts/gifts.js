@@ -1,13 +1,14 @@
-const renderGifts = async () => {
+const renderCats = async () => {
   const response = await fetch("/gifts");
+  console.log(response);
   const data = await response.json();
   console.log(data);
 
   const mainContent = document.getElementById("main-content");
 
   if (data) {
-    console.log(data.map((gift) => gift.name));
-    data.map((gift) => {
+    console.log(data.map((cat) => cat.name));
+    data.map((cat) => {
       const card = document.createElement("div");
       card.classList.add("card");
 
@@ -17,24 +18,24 @@ const renderGifts = async () => {
       const bottomContainer = document.createElement("div");
       bottomContainer.classList.add("bottom-container");
 
-      topContainer.style.backgroundImage = `url(${gift.image})`;
+      topContainer.style.backgroundImage = `url(${cat.image})`;
 
       const name = document.createElement("h3");
-      name.textContent = gift.name;
+      name.textContent = cat.name;
       bottomContainer.appendChild(name);
 
-      const pricePoint = document.createElement("p");
-      pricePoint.textContent = "Price: " + gift.pricePoint;
-      bottomContainer.appendChild(pricePoint);
+      const Age = document.createElement("p");
+      Age.textContent = "Age: " + cat.age;
+      bottomContainer.appendChild(Age);
 
-      const audience = document.createElement("p");
-      audience.textContent = "Great For: " + gift.audience;
-      bottomContainer.appendChild(audience);
+      const tags = document.createElement("p");
+      tags.textContent = "Tags: " + cat.tags;
+      bottomContainer.appendChild(tags);
 
       const link = document.createElement("a");
       link.textContent = "Read More >";
       link.setAttribute("role", "button");
-      link.href = `/gifts/${gift.id}`;
+      link.href = `/gifts/${cat.id}`;
       bottomContainer.appendChild(link);
 
       card.appendChild(topContainer);
@@ -43,9 +44,13 @@ const renderGifts = async () => {
     });
   } else {
     const message = document.createElement("h2");
-    message.textContent = "No Gifts Available 😞";
+    message.textContent = "No Cats Available 😞";
     mainContent.appendChild(message);
   }
 };
-
-renderGifts();
+const requestedUrl = window.location.href.split("/").pop();
+if (requestedUrl) {
+  window.location.href = "../404.html";
+} else {
+  renderCats();
+}
